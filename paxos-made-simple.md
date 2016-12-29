@@ -133,7 +133,7 @@ is asynchronous, a proposal could be chosen with some particular
 acceptor c never having received any proposal. Suppose a new proposer
 “wakes up” and issues a higher-numbered proposal with a different value.
 `P1` requires c to accept this proposal, violating **P2<sup>a</sup>**. 
-Maintaining both P1and `P2^a` requires strengthening **P2<sup>a</sup>** to:
+Maintaining both P1and **P2<sup>a</sup>** requires strengthening **P2<sup>a</sup>** to:
 
 > **P2<sup>b</sup>**. If a proposal with value `v` is chosen, then every higher-numbered proposal
 issued by any proposer has value `v`.
@@ -294,12 +294,12 @@ proposer issue a proposal, using the algorithm described above.
 
 It’s easy to construct a scenario in which two proposers each keep issuing
 a sequence of proposals with increasing numbers, none of which are ever
-chosen. Proposer p completes phase 1 for a proposal number n1. Another
-proposer q then completes phase 1 for a proposal number n2 > n1. Proposer
-p’s phase 2 accept requests for a proposal numbered n1 are ignored because
+chosen. Proposer p completes phase 1 for a proposal number *n<sub>1</sub>*. Another
+proposer q then completes phase 1 for a proposal number *n<sub>2</sub>* > *n<sub>1</sub>*. Proposer
+p’s phase 2 accept requests for a proposal numbered *n<sub>1</sub>* are ignored because
 the acceptors have all promised not to accept any new proposal numbered
-less than n2. So, proposer p then begins and completes phase 1 for a new
-proposal number n3 > n2, causing the second phase 2 accept requests of
+less than *n<sub>2</sub>*. So, proposer p then begins and completes phase 1 for a new
+proposal number *n<sub>3</sub>* > *n<sub>2</sub>*, causing the second phase 2 accept requests of
 proposer q to be ignored. And so on.
 
 To guarantee progress, a distinguished proposer must be selected as the
@@ -360,7 +360,7 @@ can then use the output generated for it by any server.
 
 To guarantee that all servers execute the same sequence of state machine
 commands, we implement a sequence of separate instances of the Paxos
-consensus algorithm, the value chosen by the `ith` instance being the i*th* state
+consensus algorithm, the value chosen by the *i<sup>th</sup>* instance being the *i<sup>th</sup>* state
 machine command in the sequence. Each server plays all the roles (proposer,
 acceptor, and learner) in each instance of the algorithm. For now, I assume
 that the set of servers is fixed, so all instances of the consensus algorithm
@@ -370,13 +370,13 @@ In normal operation, a single server is elected to be the leader, which
 acts as the distinguished proposer (the only one that tries to issue proposals)
 in all instances of the consensus algorithm. Clients send commands to the
 leader, who decides where in the sequence each command should appear.
-If the leader decides that a certain client command should be the 135th
-command, it tries to have that command chosen as the value of the 135th
+If the leader decides that a certain client command should be the *135<sup>th</sup>*
+command, it tries to have that command chosen as the value of the *135<sup>th</sup>*
 instance of the consensus algorithm. It will usually succeed. It might fail
 because of failures, or because another server also believes itself to be the
-leader and has a different idea of what the 135th command should be. But
+leader and has a different idea of what the *135<sup>th</sup>* command should be. But
 the consensus algorithm ensures that at most one command can be chosen
-as the 135th one.
+as the *135<sup>th</sup>* one.
 
 Key to the efficiency of this approach is that, in the Paxos consensus
 algorithm, the value to be proposed is not chosen until phase 2. Recall that,
@@ -457,7 +457,7 @@ commands will be proposed. If multiple servers think they are leaders, then
 they can all propose values in the same instance of the consensus algorithm,
 which could prevent any value from being chosen. However, safety is
 preserved—two different servers will never disagree on the value chosen as
-the `ith` state machine command. Election of a single leader is needed only
+the *i<sup>th</sup>* state machine command. Election of a single leader is needed only
 to ensure progress.
 
 If the set of servers can change, then there must be some way of determining
@@ -466,7 +466,7 @@ The easiest way to do this is through the state machine itself. The current
 set of servers can be made part of the state and can be changed with ordinary
 state-machine commands. We can allow a leader to get α commands
 ahead by letting the set of servers that execute instance i + α of the consensus
-algorithm be specified by the state after execution of the `ith` state 
+algorithm be specified by the state after execution of the *i<sup>th</sup>* state 
 machine command. This permits a simple implementation of an arbitrarily
 sophisticated reconfiguration algorithm.
 
@@ -481,7 +481,7 @@ Cambridge, MA, 02139, May 2001. also published in SIGACT News
 32(2) (June 2001).
 - [3] Leslie Lamport. The implementation of reliable distributed multiprocess
 systems. Computer Networks, 2:95–114, 1978.
-[4] Leslie Lamport. Time, clocks, and the ordering of events in a distributed
+- [4] Leslie Lamport. Time, clocks, and the ordering of events in a distributed
 system. Communications of the ACM, 21(7):558–565, July 1978.
 - [5] Leslie Lamport. The part-time parliament. ACM Transactions on Computer
 Systems, 16(2):133–169, May 1998.
