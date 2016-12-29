@@ -1,3 +1,5 @@
+[Blog](//blog.gobyoung.com/) / [Books](//blog.gobyoung.com/books) /
+
 # Readings in Distributed Systems
 
 ## Systems
