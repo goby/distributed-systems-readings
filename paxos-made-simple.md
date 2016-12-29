@@ -20,7 +20,7 @@ The Paxos algorithm, when presented in plain English, is very simple.
   2. [Progress](#24-progress)
   2. [The Implementation](#25-the-implementation)
 2. [Implementing a State Machine](#3-implementing-a-state-machine)
-3. [References](#3-reference)
+3. [References](#references)
 
 ## 1 Introduction
 
