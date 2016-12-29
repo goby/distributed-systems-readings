@@ -111,7 +111,9 @@ While designing distributed systems are hard enough, testing them is even harder
 - [Distributed Systems Testing: The Lost World](http://tagide.com/blog/research/distributed-systems-testing-the-lost-world/) Testing distributed systems are hard enough, a well researched blog post which again covers a lot of links to various approaches and other papers
 
 ## Meta Lists
+
 Other lists like this one
+
 - [Readings in distributed systems](http://christophermeiklejohn.com/distributed/systems/2013/07/12/readings-in-distributed-systems.html)
 - [Distributed Systems meta list](https://gist.github.com/macintux/6227368)
 - [List of required readings for Distributed Systems](http://www.andrew.cmu.edu/course/15-749/READINGS/required/) Part of CMU's Engineering Distributed Systems course
