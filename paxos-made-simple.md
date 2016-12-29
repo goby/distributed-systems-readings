@@ -125,23 +125,23 @@ property that only a single value is chosen.
 To be chosen, a proposal must be accepted by at least one acceptor. So,
 we can satisfy `P2` by satisfying:
 
-> `P2a`. If a proposal with value `v` is chosen, then every higher-numbered proposal
+> **P2<sup>a</sup>**. If a proposal with value `v` is chosen, then every higher-numbered proposal
 accepted by any acceptor has value `v`.
 
 We still maintain `P1` to ensure that some proposal is chosen. Because communication
 is asynchronous, a proposal could be chosen with some particular
 acceptor c never having received any proposal. Suppose a new proposer
 “wakes up” and issues a higher-numbered proposal with a different value.
-`P1` requires c to accept this proposal, violating `P2a`. 
-Maintaining both P1and `P2^a` requires strengthening `P2a` to:
+`P1` requires c to accept this proposal, violating **P2<sup>a</sup>**. 
+Maintaining both P1and `P2^a` requires strengthening **P2<sup>a</sup>** to:
 
-> `P2b`. If a proposal with value `v` is chosen, then every higher-numbered proposal
+> **P2<sup>b</sup>**. If a proposal with value `v` is chosen, then every higher-numbered proposal
 issued by any proposer has value `v`.
 
 Since a proposal must be issued by a proposer before it can be accepted by
-an acceptor, `P2b` implies `P2a` , which in turn implies `P2`.
+an acceptor, **P2<sup>b</sup>** implies **P2<sup>a</sup>** , which in turn implies `P2`.
 
-To discover how to satisfy `P2b`, let’s consider how we would prove that
+To discover how to satisfy **P2<sup>b</sup>**, let’s consider how we would prove that
 it holds. We would assume that some proposal with number `m` and value
 `v` is chosen and show that any proposal issued with number `n > m` also
 has value `v`. We would make the proof easier by using induction on `n`,
@@ -160,15 +160,15 @@ Since any set `S` consisting of a majority of acceptors contains at least one
 member of `C` , we can conclude that a proposal numbered `n` has value `v` by
 ensuring that the following invariant is maintained:
 
-> `P2c`. For any `v` and `n`, if a proposal with value `v` and number `n` is issued,
+> **P2<sup>c</sup>**. For any `v` and `n`, if a proposal with value `v` and number `n` is issued,
 then there is a set `S` consisting of a majority of acceptors such that
 either (a) no acceptor in `S` has accepted any proposal numbered less
 than `n`, or (b) `v` is the value of the highest-numbered proposal among
 all proposals numbered less than `n` accepted by the acceptors in `S`.
 
-We can therefore satisfy `P2b` by maintaining the invariance of `P2c`.
+We can therefore satisfy **P2<sup>b</sup>** by maintaining the invariance of **P2<sup>c</sup>**.
 
-To maintain the invariance of `P2c`, a proposer that wants to issue a proposal
+To maintain the invariance of **P2<sup>c</sup>**, a proposer that wants to issue a proposal
 numbered `n` must learn the highest-numbered proposal with number
 less than `n`, if any, that has been or will be accepted by each acceptor in
 some majority of acceptors. Learning about proposals already accepted is
@@ -200,10 +200,10 @@ So, we need to say only when it is allowed to respond to a request. It can
 always respond to a `prepare` request. It can respond to an `accept` request,
 accepting the proposal, iff it has not promised not to. In other words:
 
-> `P1a`. An acceptor can accept a proposal numbered `n` iff it has not responded
+> **P1<sup>a</sup>**. An acceptor can accept a proposal numbered `n` iff it has not responded
 to a prepare request having a number greater than `n`.
 
-Observe that `P1a` subsumes `P1`.
+Observe that **P1<sup>a</sup>** subsumes `P1`.
 
 We now have a complete algorithm for choosing a value that satisfies the
 required safety properties—assuming unique proposal numbers. The final
@@ -219,7 +219,7 @@ a `prepare` request for a proposal it has already accepted.
 
 With this optimization, an acceptor needs to remember only the highest-numbered
 proposal that it has ever accepted and the number of the highest-numbered
-`prepare` request to which it has responded. Because `P2c` must
+`prepare` request to which it has responded. Because **P2<sup>c</sup>** must
 be kept invariant regardless of failures, an acceptor must remember this
 information even if it fails and then restarts. Note that the proposer can
 always abandon a proposal and forget all about it—as long as it never tries
