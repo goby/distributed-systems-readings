@@ -6,12 +6,12 @@
 Graduate level operating systems courses don't typically have notes - they all come with long reading lists taken from SOSP and other places. In this way, systems research is a bit more like a humanities subject: it's vital to read the primary sources.
 
 + [Cornell CS 614 - Advanced Course in Computer Systems](http://www.cs.cornell.edu/Courses/cs614/2007fa/) - Ken Birman teaches this course. The readings cover more distributed systems research than is typical (which I am in favour of!). In fact, there's barely anything on traditional internal OS topics like filesystems or memory management. There's some worthwhile commentary at the bottom of the page.
-+ [Princeton COS 518 - Advanced Operating Systems](http://www.cs.princeton.edu/courses/archive/fall05/cos518/) - short and snappy reading list of two papers per topic, covering some interesting stuff like buffering inside the operating system, and L4.
++ [Princeton COS 518 - Advanced Operating Systems](https://www.cs.princeton.edu/courses/archive/fall13/cos518/) - short and snappy reading list of two papers per topic, covering some interesting stuff like buffering inside the operating system, and L4.
 + [Stanford CS240 - Advanced Topics in Operating Systems](http://www.stanford.edu/class/cs240/) - an interesting and concise set of readings. A presentation on Firefox internals is a course-specific highlight.
 + [Harvard CS264 - Peer-to-Peer Systems](http://www.eecs.harvard.edu/~mema/courses/cs264/cs264.html) - No notes but a useful collection of papers surveying from CAN and Chord to Skype.
-+ [CSE 552 - Distributed Systems](http://www.cs.washington.edu/education/courses/552/07sp/) - University of Washington graduate distributed systems course. Thoughtfully selected readings.
++ [CSE 552 - Distributed Systems](https://courses.cs.washington.edu/courses/cse552/13au/) - University of Washington graduate distributed systems course. Thoughtfully selected readings.
 + [CMU 15-712 - Advanced and Distributed Operating Systems](http://www.cs.cmu.edu/~15712/)
-+ [UIUC CS 525 - Advanced Distributed Systems](http://www.cs.uiuc.edu/class/sp09/cs525/sched.htm) - long list of readings, drawn mostly from the last ten years or so, focusing on applications.
++ [UIUC CS 525 - Advanced Distributed Systems](https://courses.engr.illinois.edu/cs525/sp2016/) - long list of readings, drawn mostly from the last ten years or so, focusing on applications.
 + [Cornell CS6452 - Datacenter Networks and Services](http://www.cs.cornell.edu/courses/cs6452/2012sp/lectures.php) - networking focused - but by no means exclusively.
 + [MIT 6.824 - Distributed Systems](https://pdos.csail.mit.edu/6.824/) - A modern distributed systems with go, raft and other new things.
 
